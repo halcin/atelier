@@ -25,6 +25,19 @@ public class TestJunit{
 		  .verify();	
 	}
 	
+	@Test
+	public void testFilteredWithNameInUppercase() {
+		Flux<String> source = Flux.just("John", "Monica", "Mark", "Cloe", "Frank", "Casper", "Olivia", "Emily", "Cate")
+				.filter(name -> name.length() == 4).map(String::toUpperCase); //JOHN,MARK,CATE,CLOE
+
+
+		StepVerifier
+		  .create(source)
+		  .expectNext("JOHN","MARK","CLOE","CATE")
+		  .expectComplete()
+		  .verify();	
+	}
+	
 	
 	@Test
 	public void testInactiveCasAllNotClose() {
