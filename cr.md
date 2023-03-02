@@ -12,4 +12,17 @@ Atelier 0 (16/02/2023)
 	2 atelier test unitaires front 
 
 Atelier 1 (02/03/2023)
--	Execice basique programmation reactive
+-	Execice basique programmation reactive :
+	- 	Difference entre le Mono et le Flux 
+	-	Gestion des erreurs
+	-	Gestion des cas vide
+
+Atelier 2 (09/03/2023)
+-	Execice MOMO comprendre pourquoi Excetion tout seul ne marche pas
+-	Execice CHAD trouver un cas de teste pour le switchIfEmpty (vu avec Laurent)
+	-	finaliser le gitIgnore
+-	Execice HUBERT trouver des execice sur :
+	-	zip
+	-	zipWith
+	-	flatMap
+	-	flatMapMany

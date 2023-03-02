@@ -11,32 +11,43 @@ public class MonoVsFluxTest {
 
 	@Test
 	public void givenFluxPublisher_whenSubscribed_ThenReturnMultipleValues() {
-		Flux<String> stringFlux = Flux.just("Hello", "Baeldung");
-		StepVerifier.create(stringFlux);
-		// Ajouter le code
+		Flux<String> stringFlux = Flux.just("Hello", "world");
+		StepVerifier.create(stringFlux)
+					.expectNext("Hello")
+					.expectNext("world")
+					.expectComplete()
+					.verify();
 
 	}
 
 	@Test
 	public void givenFluxPublisher_WhenSubscribe_ThenReturnMultipleValuesWithError() {
-		Flux<String> stringFlux = Flux.just("Hello", "Baeldung", "Error").map(str -> {
+		Flux<String> stringFlux = Flux.just("Hello", "world", "Error").map(str -> {
+
+			if (str.equals("Error")) {
+				//return "toto";
+				throw new RuntimeException("erreur");
+			}
 			//Ajouter/modifier du code pour que le flux renvoie une erreur apres avoir
-			//retourné baeldung
+			//retournï¿½ baeldung
 			return str;
 		});
-		StepVerifier.create(stringFlux);
+		StepVerifier.create(stringFlux)
+		.expectNext("Hello", "world")
+		.expectError().verify();
 		// Ajouter le code
 	}
 	
 
 	
 	@Test
-	public void givenMono_MonoIsEmpty_ThenReturnDefaultValue() {
-		String defaultFirstname = "VALENTINE";
+	public void givenMono_WhenMonoIsEmpty_ThenReturnDefaultValue() {
+		String defaultFirstname = "Valentine";
 		int maxLinesAuthorized = 1;
 				Flux<String> source = Flux.just("John", "Monica", "Mark", "Cloe", "Frank", "Casper", "Olivia", "Emily", "Cate")
-				.filter(name -> name.length() == maxLinesAuthorized).map(String::toUpperCase);
-				// ajouter du code a la source
+				.filter(name -> name.length() == maxLinesAuthorized)
+				.switchIfEmpty(Flux.just(defaultFirstname))
+				.map(String::toUpperCase);
 				
 				StepVerifier
 				  .create(source)
