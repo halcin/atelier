@@ -59,7 +59,7 @@ public class CombiningPublishersTest {
 	public void givenFluxesWithEmptyCase_whenZipIsInvokedWithDefault_then2() {
 		Flux<Integer> fluxWithDefautValue = Flux.just(1, 3, 5).filter(x -> x % 2 == 0);
 		Flux<Integer> fluxOfIntegers = Flux.zip(fluxWithDefautValue.defaultIfEmpty(2), oddNumbers, (a, b) -> a + b);
-		StepVerifier.create(fluxOfIntegers)
+		StepVerifier.create(fluxOfIntegers);
         //ajoute
 	}
 	

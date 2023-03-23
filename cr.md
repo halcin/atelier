@@ -26,3 +26,9 @@ Atelier 2 (09/03/2023)
 	-	zipWith
 	-	flatMap
 	-	flatMapMany
+
+Atelier 3 (23/03/2023)
+-    Compréhension de la différence entre un @Mock et @InjectMocks
+-    Exercice sur les tests du service TutorialService
+-    Compréhension de la méthode times
+-    Refléxion sur le prochain atelier, le choix est le suivant : CodingGame
